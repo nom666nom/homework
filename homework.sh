@@ -1,5 +1,5 @@
 #/bin/bash
-
+#DATE 5/10/2013
 #API Variables
 
 nytapi="16b91f70ea44e34abf2712004fc56090:0:67655429"
