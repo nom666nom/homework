@@ -1,0 +1,6 @@
+Please create a simple application, in the language of your choice, that will:
+
+-Given a single keyword, retrieve a list of articles matching that keyword from the New York Times API.
+-Store the set of results (as raw JSON or XML is fine) in a public Amazon S3 bucket
+
+When you're done with the exercise, please send me the Github repo information. 
