@@ -23,9 +23,15 @@ curl -F "key=$word-search.txt" -F "acl=public-read" -F "AWSAccessKeyId=AKIAIA72G
 
 #Verifying Upload Happened
 
-checkout=`curl -sI http://homework-temboo.s3.amazonaws.com/$word-search.txt | grep 'HTTP/1.1 200 OK'`
+checkout=`curl -sI http://homework-temboo.s3.amazonaws.com/$word-search.txt | grep 'HTTP/1.1 200 OK' | cut -c 10-13`
 
 echo $checkout
+
+if [[ "$checkout" -eq "200" ]];
+        then
+        echo "Success"
+else    echo "Oh noes something is wrong"
+fi
 
 #Results
 echo "You can see your JSON file here: http://homework-temboo.s3.amazonaws.com/$word-search.txt"
