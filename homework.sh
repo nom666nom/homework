@@ -5,16 +5,13 @@
 echo "Please Enter a Search Term"
 read word
 
-echo "Searching for $word"
+echo "Searching for: $word"
 
 #Query
 
-#Working Test Query
-#curl --data-urlencode "http://api.nytimes.com/svc/search/v1/article?query=$word&api-key=16b91f70ea44e34abf2712004fc56090:0:67655429"
-
 echo "Running Query"
 #Query for encoding
-curl -v --get --data-urlencode "api-key=16b91f70ea44e34abf2712004fc56090:0:67655429" --data-urlencode "query=$word" http://api.nytimes.com/svc/search/v1/article? > $word-search.txt
+curl -s --get --data-urlencode "api-key=16b91f70ea44e34abf2712004fc56090:0:67655429" --data-urlencode "query=$word" --data-urlencode "fields=title,body,date,url" http://api.nytimes.com/svc/search/v1/article? > $word-search.txt
 
 #Upload
 echo "Uploading Your Results"
@@ -36,3 +33,21 @@ fi
 #Results
 echo "You can see your JSON file here: http://homework-temboo.s3.amazonaws.com/$word-search.txt"
 
+#For the Lazy
+echo "If you're on OSX would you like me to open the URL in Safari?"
+echo "Type yes otherwise a return will exit the app."
+
+read lazy
+
+if [[ "$lazy" =  "yes" ]]
+	then
+	echo "To the interwebs!"
+	open -a Safari http://homework-temboo.s3.amazonaws.com/$word-search.txt
+	exit 1
+else	
+	echo "Copy and paste then"
+	exit 1
+
+fi
+
+echo "kthxbai"
