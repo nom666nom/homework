@@ -34,6 +34,7 @@ if [[ "$checkout" -eq "200" ]];
         then
         echo "Success"
 else    echo "Oh noes something is wrong"
+	exit 1
 fi
 
 #Results
