@@ -28,11 +28,9 @@ curl -F "key=$word-search.txt" -F "acl=public-read" -F "AWSAccessKeyId=$s3apikey
 
 checkout=`curl -sI http://homework-temboo.s3.amazonaws.com/$word-search.txt | grep 'HTTP/1.1 200 OK' | cut -c 10-13`
 
-echo $checkout
-
 if [[ "$checkout" -eq "200" ]];
         then
-        echo "Success"
+        echo "Upload was a Success!"
 else    echo "Oh noes something is wrong"
 	exit 1
 fi
@@ -54,9 +52,8 @@ if [[ "$lazy" =  "yes" ]]
 	exit 1
 else	
 	echo "Copy and paste then"
+	echo "kthxbai"
 	rm $word-search.txt
 	exit 1
 
 fi
-
-echo "kthxbai"
